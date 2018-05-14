@@ -69,12 +69,12 @@ function printQuote() {
     }
 
     quoteBox.innerHTML = buildQuote;
-    console.log(randomQuote);
+    
     quotes.splice(randomQuote, 1);
 
     if(quotes.length < 1) {
         quotes = quotesDefault.slice(0);
-        console.log('Array is empty');
+        
     }
 }
 
