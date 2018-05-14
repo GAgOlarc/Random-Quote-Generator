@@ -1,6 +1,4 @@
-// event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 const quotesDefault = [
     {
@@ -26,6 +24,18 @@ const quotesDefault = [
         source: "Nelson Mandela",
         citation: "",
         year: "1918 - 2013"
+    },
+    {
+        quote: "Try not to become a man of success, but rather try to become a man of value.",
+        source: "Albert Einstein",
+        citation: "Physicist",
+        year: ''
+    },
+    {
+        quote: "You must be the change you wish to see in the world.",
+        source: "Mahatma Gandhi",
+        citation: "",
+        year: ""
     }
 ];
 
@@ -47,12 +57,16 @@ function printQuote() {
     quoteBox.removeChild(quoteBox.lastElementChild);
 
     const randomQuote = randomNumber(quotes.length); 
-    // const randomQuote = getRandomQuote();
-    const buildQuote =  '<p class="quote">' + quotes[randomQuote].quote + '</p>'
-                        + '<p class="source">' + quotes[randomQuote].source 
-                        + '<span class="citation">' + quotes[randomQuote].citation + '</span>'
-                        + '<span class="year">' + quotes[randomQuote].year + '</span>'
-                        + '</p>';
+
+    let buildQuote = '<p class="quote">' + quotes[randomQuote].quote + '</p>';
+    buildQuote += '<p class="source">' + quotes[randomQuote].source;
+
+    if(quotes[randomQuote].citation) {
+        buildQuote += '<span class="citation">' + quotes[randomQuote].citation + '</span>';
+    } 
+    if(quotes[randomQuote].year) {
+        buildQuote += '<span class="year">' + quotes[randomQuote].year + '</span>';
+    }
 
     quoteBox.innerHTML = buildQuote;
     console.log(randomQuote);
@@ -76,10 +90,10 @@ loadQuote.addEventListener('click', () => {
 });
 
 //Refresh The Code Automaticly
-// var intervalID = setInterval(() => {
-//     changeBackground();
-//     printQuote();
-// }, 3000);
+var intervalID = setInterval(() => {
+    changeBackground();
+    printQuote();
+}, 3000);
 
 
 
